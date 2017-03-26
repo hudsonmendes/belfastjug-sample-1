@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: belfastjug-sample-01
+  data:
+    mongodb:
+      uri: ${MONGO_URL}

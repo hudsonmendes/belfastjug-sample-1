@@ -1,0 +1,46 @@
+buildscript {
+	ext {
+		springBootVersion     = "1.5.2.RELEASE"
+		gradleDockerVersion   = "1.2"
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("se.transmode.gradle:gradle-docker:${gradleDockerVersion}")
+	}
+}
+
+apply plugin: "java"
+apply plugin: "application"
+apply plugin: "eclipse"
+apply plugin: "org.springframework.boot"
+apply plugin: 'docker'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    mainClassName       = "com.hudsonmendes.microservice1.AllInOneController"
+}
+
+jar {
+    baseName = "belfastjug-sample-01"
+    group    = "com.hudsonmendes"
+    version  = "0.0.1-SNAPSHOT"
+    manifest { attributes "Main-Class": "com.hudsonmendes.microservice1.AllInOneController" }
+}
+
+docker {
+    baseImage "frolvlad/alpine-oraclejdk8:slim"
+    maintainer 'Hudson Mendes "hudsonmendes@gmail.com"'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web")
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+}
