@@ -3,4 +3,5 @@ spring:
     name: belfastjug-sample-01
   data:
     mongodb:
-      uri: ${MONGO_URL}
+      uri     : ${MONGO_URL}
+      database: ${MONGO_DBNAME}

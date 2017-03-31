@@ -21,14 +21,14 @@ apply plugin: 'docker'
 compileJava {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
-    mainClassName       = "com.hudsonmendes.microservice1.AllInOneController"
+    mainClassName       = "com.hudsonmendes.microservice1.AppEntry"
 }
 
 jar {
     baseName = "belfastjug-sample-01"
     group    = "com.hudsonmendes"
     version  = "0.0.1-SNAPSHOT"
-    manifest { attributes "Main-Class": "com.hudsonmendes.microservice1.AllInOneController" }
+    manifest { attributes "Main-Class": "com.hudsonmendes.microservice1.AppEntry" }
 }
 
 docker {
@@ -42,5 +42,6 @@ repositories {
 
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.data:spring-data-mongodb")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
